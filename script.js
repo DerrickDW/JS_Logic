@@ -126,6 +126,9 @@ function calculateSubtotal() {
   // TODO:
   // Use a loop to go through the cart
   // and add each item's price to subtotal.
+  for (const i of cart){
+    subtotal += i.price
+  }
 
 
   return subtotal;
