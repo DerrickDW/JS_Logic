@@ -148,7 +148,13 @@ function calculateDiscount(subtotal) {
   // $100 or more  -> 20%
   // $50 or more   -> 10%
   // Less than $50 -> 0%
-
+  if (subtotal >= 100){
+    discount = subtotal * 0.20
+  }
+    else if (subtotal >= 50) {
+      discount = subtotal * 0.10
+      }
+      else discount = 0
 
   return discount;
 }
@@ -160,7 +166,9 @@ function updateTotals() {
   // TODO:
   //
   // 1. Get the subtotal.
+  let subtotal = calculateSubtotal();
   // 2. Get the discount.
+  let discount = calculateDiscount();
   // 3. Calculate the final total.
   // 4. Display all three values on the page.
 
