@@ -122,13 +122,17 @@ function renderCart() {
   //
   // 6. Call the function that calculates
   //    the total.
-
   cartItems.textContent = "";
 
 
   for (const i of cart) {
     const item = document.createElement("div")
-    item.textContent = i.name + " $" + i.price.toFixed(2)
+    const itemName = document.createElement("span")
+    const itemPrice = document.createElement("span")
+    item.classList.add("cart-item")
+    itemName.textContent = i.name
+    itemPrice.textContent = "$" + i.price.toFixed(2)
+    item.append(itemName, itemPrice)
     cartItems.append(item)
   }
   cartCount.textContent = cart.length.toString()
