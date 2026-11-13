@@ -94,6 +94,11 @@ function addToCart(name, price) {
   //   name: "T-Shirt",
   //   price: 20
   // }
+  cart.push({
+    name: name,
+    price: price,
+  })
+  renderCart()
 
 
 }
@@ -117,10 +122,17 @@ function renderCart() {
   //
   // 6. Call the function that calculates
   //    the total.
+
+  cartItems.textContent = "";
+
+
   for (const i of cart) {
-    cartItems.append(i.name)
+    const item = document.createElement("div")
+    item.textContent = i.name + " $" + i.price.toFixed(2)
+    cartItems.append(item)
   }
-  cartCount.textContent = length(cart)
+  cartCount.textContent = cart.length.toString()
+  updateTotals()
 
 
 }
@@ -180,7 +192,7 @@ function updateTotals() {
   // 3. Calculate the final total.
   let total = subtotal - discount;
   // 4. Display all three values on the page.
-  subtotalElement.textContent = subtotal;
-  discountElement.textContent = discount;
-  totalElement.textContent = total;
+  subtotalElement.textContent = "$" + subtotal.toFixed(2);
+  discountElement.textContent = "$" + discount.toFixed(2);
+  totalElement.textContent = "$" + total.toFixed(2);
 }
