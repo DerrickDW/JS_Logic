@@ -47,8 +47,7 @@ addButtons.forEach(function(button) {
 
     // TODO:
     // Add the product to the cart.
-
-
+    addToCart(name, price);
   });
 
 });
@@ -67,6 +66,11 @@ checkoutButton.addEventListener("click", function() {
   //
   // Otherwise:
   //     Display a thank-you message.
+  if (cart.length === 0)
+      discountMessage.textContent = "Your cart is empty!";
+  else if (cart.length <= 0) {
+    discountMessage.textContent = "Thank You!";
+  }
 
 
 });
@@ -113,6 +117,10 @@ function renderCart() {
   //
   // 6. Call the function that calculates
   //    the total.
+  for (const i of cart) {
+    cartItems.append(i.name)
+  }
+  cartCount.textContent = length(cart)
 
 
 }
@@ -168,9 +176,11 @@ function updateTotals() {
   // 1. Get the subtotal.
   let subtotal = calculateSubtotal();
   // 2. Get the discount.
-  let discount = calculateDiscount();
+  let discount = calculateDiscount(subtotal);
   // 3. Calculate the final total.
+  let total = subtotal - discount;
   // 4. Display all three values on the page.
-
-
+  subtotalElement.textContent = subtotal;
+  discountElement.textContent = discount;
+  totalElement.textContent = total;
 }
