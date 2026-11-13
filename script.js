@@ -68,7 +68,7 @@ checkoutButton.addEventListener("click", function() {
   //     Display a thank-you message.
   if (cart.length === 0)
       discountMessage.textContent = "Your cart is empty!";
-  else if (cart.length <= 0) {
+  else {
     discountMessage.textContent = "Thank You!";
   }
 
